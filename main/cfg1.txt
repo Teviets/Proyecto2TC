@@ -1,4 +1,10 @@
-[A − Z](\n) -> ((\n)([A − Za − z0 − 9])∗ (\n\|)∗ )" | \ε
-A -> C
-B -> S | A
-C -> S | ε
+S      → term
+term   → factor X1
+X1     → X3 factor X1 | ε
+X3     → + | -
+factor → unary X2
+X2     → X4 unary X2 | ε
+X4     → * | /
+unary  → digit X5
+X5     → digit X5 | ε
+digit  → 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
