@@ -37,37 +37,40 @@ class CFG:
                 f"Start Symbol: {self.start_symbol})")
     
     def replaceCompleteWordsToLetters(self):
-        self.non_terminalsOG = self.non_terminals
-        self.newNonTerminals = set()
-        self.idsNonTerminals = {}
-        for key, value in self.productions.items():
-            for prod in value:
-                lstProds = prod.split(' ')
-                for item in lstProds:
-                    if len(item) > 1:
-                        if item not in self.newNonTerminals:
-                            self.newNonTerminals.add(item)
-                            self.idsNonTerminals[item] = f"{alfabetMayus.pop(0)}"
-        for key, value in self.productions.items():
-            new_productions = []
-            for prod in value:
-                lstProds = prod.split(' ')
-                newProd = ""
-                for item in lstProds:
-                    if item in self.newNonTerminals:
-                        newProd += self.idsNonTerminals[item]
-                    else:
-                        newProd += item
-                new_productions.append(newProd)
-            self.productions[key] = new_productions
+            self.non_terminalsOG = self.non_terminals
+            self.newNonTerminals = set()
+            self.idsNonTerminals = {}
+            for key, value in self.productions.items():
+                for prod in value:
+                    lstProds = prod.split(' ')
+                    for item in lstProds:
+                        if len(item) > 1:
+                            if item not in self.newNonTerminals:
+                                self.newNonTerminals.add(item)
+                                self.idsNonTerminals[item] = f"{alfabetMayus.pop(0)}"
+            for key, value in self.productions.items():
+                new_productions = []
+                for prod in value:
+                    lstProds = prod.split(' ')
+                    newProd = ""
+                    for item in lstProds:
+                        if item in self.newNonTerminals:
+                            newProd += self.idsNonTerminals[item]
+                        else:
+                            newProd += item
+                    new_productions.append(newProd)
+                self.productions[key] = new_productions
 
-        # reemplaza las llaves de productions por las nuevas llaves
-        for key, value in self.idsNonTerminals.items():
-            self.productions[value] = self.productions.pop(key)
+            # reemplaza las llaves de productions por las nuevas llaves
+            for key, value in self.idsNonTerminals.items():
+                try:
+                    self.productions[value] = self.productions.pop(key)
+                except:
+                    continue
 
-        self.non_terminals = set()
-        for k in self.productions.keys():
-            self.non_terminals.add(k)
+            self.non_terminals = set()
+            for k in self.productions.keys():
+                self.non_terminals.add(k)
     
     
     def delProductionsEpsilon(self):
