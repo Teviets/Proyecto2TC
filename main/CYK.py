@@ -78,9 +78,9 @@ class CYK():
 
         trees = []
         for rule in cell.backtrack:
-            if len(rule.split()) == 1:
+            if len(rule.split()) == 1:  # Terminal
                 trees.append(rule)
-            else:
+            else:  # Non-terminal
                 left_part, right_part = rule.split()[:2]
                 left_tree = self.build_parse_tree(matrix, start, start)
                 right_tree = self.build_parse_tree(matrix, start + 1, end)
@@ -115,9 +115,10 @@ class CYK():
         end_time = time.time()
 
         if 'S' in final_cell:
-            print("Si")
+            print("La frase es sintácticamente correcta (Sí)")
             print("Tiempo de ejecución:", end_time - start_time)
             print("Árbol de análisis:", self.build_parse_tree(cykmatrix, 0, lentest - 1))
         else:
-            print("No")
+            print("La frase no es sintácticamente correcta (No)")
             print("Tiempo de ejecución:", end_time - start_time)
+
