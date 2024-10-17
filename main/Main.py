@@ -1,7 +1,7 @@
 from CFG import CFG
 from CFN import CFN
 from lectura import Lectura
-from CYK import CYK  # Import the CYK class
+from CYK import CYK  
 
 def main():
     
