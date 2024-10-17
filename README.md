@@ -111,4 +111,7 @@ Este proyecto fue desarrollado con la colaboración de:
 - **Sebastian Estrada** - 21405
 - **Diego Valdez** - 21328
 
+## Link al vídeo:
+
+https://youtu.be/4kWgmCqNKCQ
 
