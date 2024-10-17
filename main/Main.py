@@ -1,14 +1,14 @@
 from CFG import CFG
 from CFN import CFN
 from lectura import Lectura
-from CYK import CYK  # Import the CYK class
+from CYK import CYK  
 
 def main():
-    # Read the grammar file and obtain a list of CFGs
+    
     cfgs = Lectura("./cfg1.txt").read()
     print("Contenido del archivo leído:", cfgs)
 
-    # Create CFG object
+    
     cfg = CFG(cfgs[0], cfgs[1], cfgs[2], cfgs[3])
 
     print("Gramatica original")
